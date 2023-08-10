@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+      <title>local_storage</title>
+      <meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+      <body>
+        <header>
+          <h2>Web Storage Concept</h2>
+          <p>with web storage web application can store the data locally within the user's browser</p>
+          <p>Before HTML5 application data had to be stored in cookies including every server request</p>
+          <p>web storage is more secure and we can store large amount of data locally
+without affecting the website perfomance</p>
+          <p>Unlike cookies ,the storage limit is far larger atleast 5mb and information
+is never transferred to the server</p>
+          <p>Web storage is per origin(per domain and protocol)All pages from one origin can store and 
+access the same data</p>
+          <ol>
+            <li>Local storage--stores the data with no expiration date</li>
+            <li>Session storage--store data for one session(data is lost when the browser tab is closed)</li>
+          </ol>
+        </header>
+        <h2>Local Storage</h2>
+        <p>stores the data with no expiration date
+data will not be deleted when the browser is closed
+and will be available for the next day or week
+or year</p>
+        <h3>Example for local storage</h3>
+        <div id="result"></div>
+        <p>
+          <button onclick="clickCounter()" type="button">Click me</button>
+        </p>
+        <div id="result2"></div>
+        <p>Click this button to see the count will be increased and also
+        U can close the browser come again then click it will resume the count 
+        not start from 1 </p>
+        <hr>
+          <h2>Session Storage</h2>
+          <p>
+            <button onclick="sessionCounter()">Click Session</button>
+          </p>
+          <div id="result3"></div>
+          <p>Click this button to see the count of the clicks</p>
+          <p>Session storage once stop the browser again run the browser
+        the count starts from 1 not from pause count which we click last time</p>
+          <script>
+        
+        /*Session Storage is starts with 1 whenever we stop running and start run the page
+        *every time this will be start from 1
+        */
+        function sessionCounter()
+        {
+        if(typeof(Storage)!=="undefined")
+        {
+              if(sessionStorage.clickcount)
+              {
+              sessionStorage.clickcount=Number(sessionStorage.clickcount)+1;
+              }
+              else{
+              sessionStorage.clickcount=1;
+              }
+        document.getElementById("result3").innerHTML= "Session storage count " 
+        +sessionStorage.clickcount+ "time(s)";
+        }
+        else
+        {
+        document.getElementById("result3").innerHTML="browser not support";
+        }
+        }
+        
+        
+        
+        //count will increase for each click even though we stop the browser then
+        // again run the browser it will continue its count not start with 1 this is called 
+        // LOCAL STORAGE
+      function clickCounter()
+      {
+        if(typeof(Storage)!=="undefined")
+        {
+              if(localStorage.clickcount)
+              {
+              localStorage.clickcount=Number(localStorage.clickcount)+1;
+              }
+              else{
+              localStorage.clickcount=1;
+              }
+        document.getElementById("result2").innerHTML=
+        "U Have Clicked the Button "+localStorage.clickcount +
+        " time(s)"; 
+        } 
+        else
+        {
+        document.getElementById("result2").innerHTML="Sorry browser not support";
+        }              
+      }
+                
+        
+// check the browser support
+if(typeof(Storage)!== "undefined")
+{
+localStorage.setItem("lastname","Smirthi");
+document.getElementById('result').innerHTML=localStorage.getItem("lastname");
+}
+else
+{
+document.getElementById('result').innerHTML="browser does not support"
+}
+
+</script>
+        </body>
+      </html>

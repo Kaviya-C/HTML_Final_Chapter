@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+      <title>web_Workers</title>
+      <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="webworker.css">
+</head>
+        <body>
+          <header>
+            <h2>Web Workers API in HTML5</h2>
+          </header>
+          <p>Web Workers is a javascript running in 
+the background,Without affecting the performance of the page</p>
+          <aside>
+            <details>
+              <summary>What is Web worker??</summary>
+              <article id="start">
+              <h2>Web Worker</h2>
+                <p>when executing srcipts in an html page ,
+the page becomes unresponsive until the 
+script is finished<br>
+                  <b>Web Worker is a javascript
+it runs in the background,independently of other scripts
+,without affection the performance of the page.
+u can continue to distrub the page while scripting is happening
+EG:click any other things on the page while the web worker runs
+in the background</b></p>
+                </article>
+              </details>
+            </aside>
+            <p>Count Numbers:</p>
+<output id="one"></output>
+            
+            <button onclick="startWork()">StartWorking</button>
+            <button onclick="stopWork()">StopWorking</button>
+            <script>
+var w;
+
+function startWork(){
+if(typeof(Worker)!== "undefined")
+{
+      if(typeof(w)=="undefined")
+      {
+      w=new Worker("workers.js");
+      }
+      w.onmessage=function(event)
+      {
+      document.getElementById("one").innerHTML=event.data;
+      };
+ }
+      else
+      {
+      document.getElementById("one").innerHTML="browser not support";
+      }
+}
+function stopWork()
+{
+w.terminate();
+w="undefined";
+
+}
+</script>
+          </body>
+        </html>

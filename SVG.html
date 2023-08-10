@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+      <title> SVG</title>
+      <meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+      <body>
+        <header>
+          <h2>Scalable Vector Graphics</h2>
+          <p>SVG used to define the graphics for the web</p>
+        </header>
+        <main>
+          <svg width="100" height="100">
+            <circle cx="50" cy="50" r="40" stroke="red" stroke-width="20" fill="blue"/>
+          </svg>
+          <br>
+            <br>
+              <svg width="400" height="100">
+                <rect width="400" height="100" style="fill:rgb(138,100,10);
+stroke-width:15;stroke:rgb(0,100,120)"/>
+              </svg>
+              <br>
+                <br>
+                  <svg width="400" height="100">
+                    <circle id="circles" cx="10" cy="10" r="10" stroke="green" stroke-width="5" fill="yellow"/>
+                  </svg>
+                </main>
+                <script>
+const cir=document.getElementById('circles');
+cir.setAttribute('fill',"red");
+cir.setAttribute('r','90');
+</script>
+              </body>
+            </html>
